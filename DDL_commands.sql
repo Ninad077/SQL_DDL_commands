@@ -45,4 +45,27 @@ ALTER TABLE Course_details ADD primary key(course_name);
 ALTER TABLE Course_enrolled ADD foreign key(course_id) references course_details(cid);
 
 
+-- Usecase of modiying a constraint and adding a column before another column.
+-- Create table facility. Add the below fields into it.
+-- ●	Facility_ID
+-- ●	Name
+-- ●	State
+-- ●	Country
+
+-- i) Alter the table by adding the primary key and auto increment to Facility_ID column.
+-- ii) Add a new column city after name with data type as varchar which should not accept any null values.
+drop table facility;
+
+create table facility(
+Facility_ID int,
+Name varchar(100),
+State varchar(100),
+Country varchar(100)
+);
+
+Alter table facility modify Facility_ID int auto_increment primary key;
+
+Alter table facility add City varchar(100) not null after Name;
+
+describe facility;
 
